@@ -1,10 +1,10 @@
+import React from 'react'
 
-
-function Total(numberOfExercises) {
+export function Total(props) {
 
   return (
-    <div>
-      asd
+    <div>Number of exercises 
+      {props.exercises}
     </div>
   );
 }
