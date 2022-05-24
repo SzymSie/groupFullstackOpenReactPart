@@ -1,6 +1,6 @@
 
 const Header = (props) => (
-    <div className="header">{props.course}
+    <div className="header">{props.course.name}
         <span>
             Hello, this is the header</span>
     </div>
