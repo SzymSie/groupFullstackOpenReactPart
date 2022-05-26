@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Statistics } from "./unicafe/Statistics";
-import { Button } from "./components/Button";
+import { Statistics } from "../unicafe/Statistics";
+import { Button } from "../components/Button";
 
 const AppExercise106 = () => {
   // save clicks of each button to its own state
