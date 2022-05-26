@@ -1,11 +1,11 @@
+import {StatisticLine} from "../components/StatisticLine.js";
 
 export const Statistics = (props) => {
   return (
     <div>
-
-      <div>good {props.good}</div>
-      <div>neutral {props.neutral}</div>
-      <div>bad {props.bad}</div>
+      <StatisticLine text="good" value ={props.good} />
+      <StatisticLine text="neutral" value ={props.neutral} />
+      <StatisticLine text="bad" value ={props.bad} />
 
       {/* 1.6 */}
       <div>all {props.all}</div>
