@@ -1,5 +1,8 @@
 export const StatisticLine = (props) => {
     return (
-        <div>{props.text} {props.value}</div>
+      <>
+        <td>{props.text}</td>
+        <td>{props.value}</td>
+      </>      
     )
 }

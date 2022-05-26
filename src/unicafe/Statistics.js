@@ -1,17 +1,34 @@
-import {StatisticLine} from "../components/StatisticLine.js";
+import { StatisticLine } from "../components/StatisticLine.js";
 
 export const Statistics = (props) => {
+  // <table>    Defines a table
+  // <th>    Defines a header cell in a table
+  // <tr>    Defines a row in a table
+  // <td>    Defines a cell in a table
   return (
     <div>
-      <StatisticLine text="good" value ={props.good} />
-      <StatisticLine text="neutral" value ={props.neutral} />
-      <StatisticLine text="bad" value ={props.bad} />
-
-      {/* 1.6 */}
-      <div>all {props.all}</div>
-      <div>average {props.average}</div>
-      <div>positive {props.positive} %</div> 
-      
+      <table>
+        <th>
+          <tr>
+            <StatisticLine text="good" value={props.good} />
+          </tr>
+          <tr>
+            <StatisticLine text="neutral" value={props.neutral} />
+          </tr>
+          <tr>
+            <StatisticLine text="bad" value={props.bad} />
+          </tr>
+          <tr>
+            <StatisticLine text="all" value={props.all} />
+          </tr>
+          <tr>
+            <StatisticLine text="average" value={props.average} />
+          </tr>
+          <tr>
+            <StatisticLine text="positive" value={props.positive} />
+          </tr>
+        </th>
+      </table>
     </div>
-
-  )}
+  );
+};

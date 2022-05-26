@@ -34,7 +34,7 @@ const AppExercise106 = () => {
 
       <h2>statistics</h2>
       {all > 0 ? (
-        <Statistics
+        <Statistics 
           good={good}
           neutral={neutral}
           bad={bad}
