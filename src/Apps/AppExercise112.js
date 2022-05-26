@@ -12,11 +12,18 @@ const AppExercise112 = () => {
   ]
    
   const [selected, setSelected] = useState(0)
+  
+  const onClickHandler = () => {
+    let number = Math.floor((Math.random()*anecdotes.length))    
+    // console.log(number)
+    setSelected(number)    
+  }
 
   return (
-    <div>
-      {anecdotes[selected]}
-    </div>
+    <>
+      <div>{anecdotes[selected]}</div>
+        <button onClick={onClickHandler}>next anecdote</button>
+    </>
   )
 }
 
