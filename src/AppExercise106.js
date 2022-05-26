@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Statistics } from './unicafe/Statistics'
 
 const AppExercise106 = () => {
   // save clicks of each button to its own state
@@ -29,16 +30,7 @@ const AppExercise106 = () => {
       <button onClick={() => handleClick("neutral")}>neutral</button>
       <button onClick={() => handleClick("bad")}>bad</button>
 
-      <h2>statistics</h2>
-
-      <div>good {good}</div>
-      <div>neutral {neutral}</div>
-      <div>bad {bad}</div>
-
-      {/* 1.6 */}
-      <div>all {all}</div>
-      <div>average {average}</div>
-      <div>positive {positive} %</div>
+      <Statistics good={good} neutral={neutral} bad={bad} all={all} average={average} positive={positive} />
       
     </div>
   )
