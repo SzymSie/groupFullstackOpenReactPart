@@ -29,8 +29,9 @@ const AppExercise106 = () => {
       <button onClick={() => handleClick("good")}>good</button>
       <button onClick={() => handleClick("neutral")}>neutral</button>
       <button onClick={() => handleClick("bad")}>bad</button>
-
-      <Statistics good={good} neutral={neutral} bad={bad} all={all} average={average} positive={positive} />
+      
+      <h2>statistics</h2>
+      {all > 0 ? <Statistics good={good} neutral={neutral} bad={bad} all={all} average={average} positive={positive} />: <div> No feedback given </div>  }
       
     </div>
   )
