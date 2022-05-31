@@ -6,6 +6,7 @@ import AppExercise106 from './Apps/AppExercise106';
 import AppExercise112 from './Apps/AppExercise112';
 import AppExercise113 from './Apps/AppExercise113';
 import AppExercise114 from './Apps/AppExercise114';
+import AppExercise201 from './Apps/AppExercise201';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,6 +15,7 @@ root.render(
     {/* <AppExercise106 /> */}
     {/* <AppExercise112 /> */}
     {/* <AppExercise113 /> */}
-    <AppExercise114 />
+    {/* <AppExercise114 /> */}
+    <AppExercise201 />
   </React.StrictMode>
 );
