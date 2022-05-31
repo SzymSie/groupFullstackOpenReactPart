@@ -35,6 +35,7 @@ const voteHandler = () => {
   return (
     <>
       <div>{anecdotes[selected]}</div>
+      <div>has {} votes</div>
         <button onClick={voteHandler}>vote</button>
         <button onClick={anecdoteHandler}>next anecdote</button>
     </>
