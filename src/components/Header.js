@@ -1,10 +1,7 @@
-
-const Header = (props) => (
-    <div className="header">{props.course.name}
-        <span>
-            Hello, this is the header</span>
-    </div>
-)
+const Header = (props) => {
+  console.log({ props });
+  return <h1 className='header'>{props.course.name}</h1>;
+};
 
 // export 'Header' (imported as 'Header') was not found in
 //  './components/Header.js' (possible exports: default)
