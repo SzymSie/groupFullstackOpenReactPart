@@ -6,29 +6,21 @@ import { Total } from "./Total.js";
 const Course = (props) => {
   return (
     <>
-      <Header course={props.course} />
-      <Content course={props.course}>
-        {/* <Part />
-        <Part />
-        <Part /> */}
-        <Part
-          part={props.course.parts[0].name}
-          exercise={props.course.parts[0].exercises}
-        />
-        <Part
-          part={props.course.parts[1].name}
-          exercise={props.course.parts[1].exercises}
-        />
-        <Part
-          part={props.course.parts[2].name}
-          exercise={props.course.parts[2].exercises}
-        />
-        <Part
-          part={props.course.parts[3].name}
-          exercise={props.course.parts[3].exercises}
-        />
-        <Total course={props.course} />
-      </Content>
+      {props.courses.map((course) => (
+        <>
+          <Header course={course} />
+          <Content course={course}>
+            {course.parts.map((part) => (
+              <Part
+                part={part.name}
+                exercise={part.exercises}
+                key={part.name}
+              />
+            ))}
+            <Total course={course} />
+          </Content>
+        </>
+      ))}
     </>
   );
 };
