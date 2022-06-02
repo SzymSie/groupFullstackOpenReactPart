@@ -1,4 +1,3 @@
-import { Part } from "./Part";
 
 export function Content({ children }) {
   return (
