@@ -1,5 +1,4 @@
 const Header = (props) => {
-  console.log({ props });
   return <h1 className='header'>{props.course.name}</h1>;
 };
 

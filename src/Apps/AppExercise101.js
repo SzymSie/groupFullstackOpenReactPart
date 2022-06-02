@@ -28,7 +28,6 @@ const App = () => {
       <Header course={course} />
       <Content course={course} />
       <Total course={course} />
-      {/* <Redux course={course} /> */}
     </div>
   );
 };

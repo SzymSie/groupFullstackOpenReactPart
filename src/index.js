@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./Apps/App";
+import AppExercise101 from "./Apps/AppExercise101";
 import AppExercise106 from "./Apps/AppExercise106";
 import AppExercise112 from "./Apps/AppExercise112";
 import AppExercise113 from "./Apps/AppExercise113";

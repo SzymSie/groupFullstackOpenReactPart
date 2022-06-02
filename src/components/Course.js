@@ -1,9 +1,9 @@
 import { Content } from "./Content.js";
 import Header from "./Header.js";
 import { Part } from "./Part.js";
+import { Total } from "./Total.js";
 
 const Course = (props) => {
-  console.log({ props });
   return (
     <>
       <Header course={props.course} />
@@ -23,6 +23,11 @@ const Course = (props) => {
           part={props.course.parts[2].name}
           exercise={props.course.parts[2].exercises}
         />
+        <Part
+          part={props.course.parts[3].name}
+          exercise={props.course.parts[3].exercises}
+        />
+        <Total course={props.course} />
       </Content>
     </>
   );
