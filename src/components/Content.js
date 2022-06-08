@@ -1,14 +1,9 @@
-    import { Part } from "./Part"
 
-    export function Content(props) {
-      
-      
-      return (
-        <div> 
-          <Part part={props.course.parts[0].name} exercise={props.course.parts[0].exercises}/>
-          <Part part={props.course.parts[1].name} exercise={props.course.parts[1].exercises}/>
-          <Part part={props.course.parts[2].name} exercise={props.course.parts[2].exercises}/>
-          {/* <p >
+export function Content({ children }) {
+  return (
+    <div>
+      {children}
+      {/* <p >
             {props.part1} {props.exercise1}
           </p>
           <p>
@@ -17,7 +12,7 @@
           <p>
             {props.part3} {props.exercise3}
           </p> */}
-        </div>
-      )
-    }
-    // props.course.parts[0].exercises
+    </div>
+  );
+}
+// props.course.parts[0].exercises
