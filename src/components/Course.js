@@ -18,6 +18,9 @@ const Course = (props) => {
               />
             ))}
             <Total course={course} />
+            <div>div 1</div>
+            <div>div 2</div>
+            <div>div 3</div>
           </Content>
         </>
       ))}
@@ -26,3 +29,4 @@ const Course = (props) => {
 };
 
 export default Course;
+

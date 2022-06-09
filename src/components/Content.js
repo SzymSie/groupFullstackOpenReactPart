@@ -1,8 +1,12 @@
 
-export function Content({ children }) {
+// export function Content({ children }) {
+export function Content(props) {
+  // console.log({children})
+  console.log(props.children)
   return (
     <div>
-      {children}
+      {/* {children} */}
+      {props.children}
       {/* <p >
             {props.part1} {props.exercise1}
           </p>
@@ -16,3 +20,5 @@ export function Content({ children }) {
   );
 }
 // props.course.parts[0].exercises
+
+<div someProp="somePropText">text</div>
