@@ -17,7 +17,8 @@ const AppExercise113 = () => {
   ]
 
   const [selected, setSelected] = useState(0)
-  const [points, setPoints] = useState([anecdotes.length])
+  const [points, setPoints] = useState(new Array(anecdotes.length).fill(0))
+  // const [points, setPoints] = useState([0,0,0,0,0,0,0,0,0,0,0])
 
   const anecdoteHandler = () => {
     let number = Math.floor((Math.random()*anecdotes.length))
@@ -25,17 +26,25 @@ const AppExercise113 = () => {
     setSelected(number)
   }
 
-const voteHandler = () => {
-    const points = [0, 0, 0, 0, 0, 0, 0]
-
+  const voteHandler = () => {
     const copy = [...points]
     copy[selected] += 1
-}
+    // setPoints(copy)
+    setPoints([...copy])
+
+    // solution
+    // const votesCopy = [...points];
+    // //2) Increment by one the value for the correspondent anecdote
+    // votesCopy[selected] += 1; //Grab the last value and add 1
+    // //3) Set the array with the update votes to the component's state
+    // setPoints(votesCopy);
+    // setPoints([...votesCopy])
+  }
 
   return (
     <>
       <div>{anecdotes[selected]}</div>
-      <div>has {} votes</div>
+      <div>has {points[selected]} votes</div>
         <button onClick={voteHandler}>vote</button>
         <button onClick={anecdoteHandler}>next anecdote</button>
     </>
