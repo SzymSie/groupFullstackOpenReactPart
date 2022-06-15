@@ -1,11 +1,6 @@
 import { useState } from 'react'
 
-
-    // let number = Math.floor((Math.random()*anecdotes.length))
-    // console.log(number)
-    // setSelected(number)
-
-const AppExercise113 = () => {
+const AppExercise114 = () => {
   const anecdotes = [
     'If it hurts, do it more often',
     'Adding manpower to a late software project makes it later!',
@@ -17,29 +12,52 @@ const AppExercise113 = () => {
   ]
 
   const [selected, setSelected] = useState(0)
-  const [points, setPoints] = useState([anecdotes.length])
+  const [points, setPoints] = useState(new Array(anecdotes.length).fill(0))
+  const [highestVoteIndex, setHighestVoteIndex] = useState()
 
   const anecdoteHandler = () => {
     let number = Math.floor((Math.random()*anecdotes.length))
-    // console.log(number)
     setSelected(number)
   }
 
-const voteHandler = () => {
-    const points = [0, 0, 0, 0, 0, 0, 0]
-
+  const voteHandler = () => {
     const copy = [...points]
     copy[selected] += 1
-}
+    setPoints([...copy])
+
+    pickMaxIndex()
+  }
+
+  const pickMaxIndex = () => {
+    const highestValue = Math.max(...points)
+    console.log({highestValue})
+
+    const highestValueIndex = points.indexOf(highestValue)
+
+    console.log({highestValueIndex})
+
+    setHighestVoteIndex(highestValueIndex)
+  }
 
   return (
     <>
+    <h2>Anecdote of the day</h2>
       <div>{anecdotes[selected]}</div>
-      <div>has {} votes</div>
+      <div>has {points[selected]} votes</div>
         <button onClick={voteHandler}>vote</button>
         <button onClick={anecdoteHandler}>next anecdote</button>
+
+      <h2>Anecdote with most votes</h2>
+        {/* <div>{anecdotes[(Math.max(...points))]}</div> */}
+        <div>{anecdotes[highestVoteIndex]}</div>
+
+        {/* <div>{anecdotes[points.find(Math.max(...points))]}</div> */}
+        <div>has {points[highestVoteIndex]} votes</div>
+        {/* <div>{pickMaxIndex}</div> */}
+
+
     </>
   )
 }
 
-export default AppExercise113
+export default AppExercise114
