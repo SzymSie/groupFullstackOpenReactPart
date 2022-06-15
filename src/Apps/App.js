@@ -1,5 +1,5 @@
 import "../App.css";
-import Header from "../components/Header.js";
+import { Header } from "../components/Header.js";
 import { Content } from "../components/Content.js";
 import { Total } from "../components/Total.js";
 
@@ -33,4 +33,7 @@ const App = () => {
 };
 
 export default App;
+<<<<<<< Updated upstream:src/Apps/App.js
 // hello :P
+=======
+>>>>>>> Stashed changes:src/Apps/AppExercise101.js

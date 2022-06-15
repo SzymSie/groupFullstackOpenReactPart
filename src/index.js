@@ -9,9 +9,16 @@ import AppExercise113 from './Apps/AppExercise113';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
+    {/* <AppExercise101 /> */}
     {/* <AppExercise106 /> */}
     {/* <AppExercise112 /> */}
+<<<<<<< Updated upstream
     <AppExercise113 />
+=======
+    {/* <AppExercise113 /> */}
+    {/* <AppExercise114 /> */}
+    <AppExercise201 />
+    {/* <AppExercise206 /> */}
+>>>>>>> Stashed changes
   </React.StrictMode>
 );
