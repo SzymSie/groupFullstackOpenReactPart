@@ -1,6 +1,6 @@
 export function Content(props) {
     // console.log({children})
-    console.log(props.children)
+    // console.log(props.children)
     return (
       <div>
         {props.children}        
