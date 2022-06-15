@@ -13,7 +13,7 @@ import AppExercise206 from "./Apps/AppExercise206";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    {/* <AppExercise101 /> */}
+    <AppExercise101 />
     {/* <AppExercise106 /> */}
     {/* <AppExercise112 /> */}
     {/* <AppExercise113 /> */}

@@ -3,8 +3,7 @@ import { Header } from "../components/Header.js";
 import { Content } from "../components/Content.js";
 import { Total } from "../components/Total.js";
 
-const App = () => {
-  // function App() {
+const AppExercise101 = () => {
   const course = {
     name: "Half Stack application development",
     parts: [
@@ -32,4 +31,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default AppExercise101;
