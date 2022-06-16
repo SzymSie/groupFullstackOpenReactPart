@@ -24,6 +24,6 @@ root.render(
     {/* <AppExercise206 /> */}
     {/* <AppExercise210 /> */}
     {/* <AppExercise211 /> */}
-    {/* <AppExercise212 /> */}
+    <AppExercise212 />
   </React.StrictMode>
 );

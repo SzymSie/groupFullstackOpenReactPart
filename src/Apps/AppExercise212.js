@@ -6,7 +6,7 @@ const Country = (props) => {
   return (
     <div>
       {console.log("props.country", country)}
-      {country ? (
+      {country && (
         <div>
           <div>capital: {country.capital}</div>
           <div>area: {country.area}</div>
@@ -15,7 +15,7 @@ const Country = (props) => {
             {/* {country?.languages.map((language) => <li>{language.name}</li>) : null} */}
           </ul>
         </div>
-      ) : null}
+      )}
     </div>
   );
 };
