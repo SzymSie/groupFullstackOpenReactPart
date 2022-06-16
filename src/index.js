@@ -9,6 +9,7 @@ import AppExercise114 from "./Apps/AppExercise114";
 import AppExercise201 from "./Apps/AppExercise201";
 import AppExercise206 from "./Apps/AppExercise206";
 import AppExercise210 from "./Apps/AppExercise210";
+import AppExercise211 from "./Apps/AppExercise211";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -20,6 +21,7 @@ root.render(
     {/* <AppExercise114 /> */}
     {/* <AppExercise201 /> */}
     {/* <AppExercise206 /> */}
-    <AppExercise210 />
+    {/* <AppExercise210 /> */}
+    <AppExercise211 />
   </React.StrictMode>
 );
