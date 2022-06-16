@@ -20,7 +20,7 @@ const Country = (props) => {
   );
 };
 
-const AppExercise211 = () => {
+const AppExercise212 = () => {
   const [countries, setCountries] = useState([]);
   const [newSearch, setNewSearch] = useState("");
   const [message, setMessage] = useState("");
@@ -60,4 +60,4 @@ const AppExercise211 = () => {
   );
 };
 
-export default AppExercise211;
+export default AppExercise212;
