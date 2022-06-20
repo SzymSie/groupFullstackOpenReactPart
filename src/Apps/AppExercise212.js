@@ -8,12 +8,19 @@ const Country = (props) => {
       {console.log("props.country", country)}
       {country && (
         <div>
+          <h1>{country.name.common}</h1>
           <div>capital: {country.capital}</div>
           <div>area: {country.area}</div>
           <h2>languages</h2>
           <ul>
-            {/* {country?.languages.map((language) => <li>{language.name}</li>) : null} */}
+            {
+              Object.entries(country.languages).map(item => <li>{item[1]}</li>)
+            }
           </ul>
+          <img
+            src={country.flags.png}
+            alt={`${country.name.common}'s flag`}
+          />
         </div>
       )}
     </div>
@@ -27,11 +34,14 @@ const AppExercise212 = () => {
 
   useEffect(() => {
     axios
-      .get(`https://restcountries.com/v3.1/name/${newSearch}`)
+      // .get(`https://restcountries.com/v3.1/name/${newSearch}`)
+      .get(`https://restcountries.com/v3.1/all`)
       .then((response) => {
         console.log("response.data", response.data);
-        if (response.data.length <= 10) {
-          setCountries(response.data);
+        const filteredCountries = response.data.filter(country =>
+          country.name.common.toLowerCase().includes(newSearch.toLowerCase()))
+        if (filteredCountries.length <= 10) {
+          setCountries(filteredCountries);
           setMessage("");
         } else {
           setMessage("Be more specific");
