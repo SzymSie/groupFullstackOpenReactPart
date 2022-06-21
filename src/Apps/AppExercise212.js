@@ -2,25 +2,21 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 const Country = (props) => {
-  const country = props.country[0] ? props.country[0] : ""
+  const country = props.country[0] ? props.country[0] : "";
   return (
     <div>
-      {console.log("props.country", country)}
       {country ? (
         <div>
           <h1>{country.name.common}</h1>
           <div>capital: {country.capital}</div>
           <div>area: {country.area}</div>
-          <h2>languages</h2>
+          <h2>languages:</h2>
           <ul>
-            {
-              Object.entries(country.languages).map(item => <li>{item[1]}</li>)
-            }
+            {Object.entries(country.languages).map((item) => (
+              <li key={item[0]}>{item[1]}</li>
+            ))}
           </ul>
-          <img
-            src={country.flags.png}
-            alt={`${country.name.common}'s flag`}
-          />
+          <img src={country.flags.png} alt={`${country.name.common}'s flag`} />
         </div>
       ) : null}
     </div>
@@ -29,7 +25,6 @@ const Country = (props) => {
 
 const AppExercise211 = () => {
   const [countries, setCountries] = useState([]);
-  // const [newSearch, setNewSearch] = useState("");
   const [message, setMessage] = useState("");
   const [filteredCountries, setFilteredCountries] = useState([]);
 
@@ -39,17 +34,17 @@ const AppExercise211 = () => {
       .get(`https://restcountries.com/v3.1/all`)
       .then((response) => {
         console.log("response.data", response.data);
-        setCountries(response.data)
+        setCountries(response.data);
       });
-  // }, [newSearch, message]);
   }, []);
 
   const onSearchChange = (event) => {
-    // setNewSearch(event.target.value);
-
-    const filtered = countries.filter(country =>
-      country.name.common.toLowerCase().includes(event.target.value.toLowerCase()))
-    if (filteredCountries.length <= 10) {
+    const filtered = countries.filter((country) =>
+      country.name.common
+        .toLowerCase()
+        .includes(event.target.value.toLowerCase())
+    );
+    if (filtered.length <= 10) {
       setFilteredCountries(filtered);
       setMessage("");
     } else {
@@ -58,6 +53,13 @@ const AppExercise211 = () => {
     }
   };
 
+  const showCountryDetails = (country) => {
+    console.log({country});
+    const arr = []
+    arr[0] = country
+    setFilteredCountries(arr)
+  }
+
   return (
     <div>
       <div>
@@ -65,8 +67,16 @@ const AppExercise211 = () => {
       </div>
 
       <div>
-        {filteredCountries && filteredCountries.length > 1
-          ? filteredCountries.map((country) => <div>{country.name.common}</div>)
+        {
+        filteredCountries && filteredCountries.length > 1
+          ? filteredCountries.map((country) => {
+              return (
+                <div key={country.name.common}>
+                  <div style={{display: "inline-block"}}>{country.name.common}</div>
+                  <button style={{display: "inline-block"}} onClick={() => showCountryDetails(country)}>show</button>
+                </div>
+              );
+            })
           : <Country country={filteredCountries} /> || null}
       </div>
       <div>{message}</div>
