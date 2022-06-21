@@ -29,8 +29,9 @@ const Country = (props) => {
 
 const AppExercise211 = () => {
   const [countries, setCountries] = useState([]);
-  const [newSearch, setNewSearch] = useState("");
+  // const [newSearch, setNewSearch] = useState("");
   const [message, setMessage] = useState("");
+  const [filteredCountries, setFilteredCountries] = useState([]);
 
   useEffect(() => {
     axios
@@ -38,20 +39,23 @@ const AppExercise211 = () => {
       .get(`https://restcountries.com/v3.1/all`)
       .then((response) => {
         console.log("response.data", response.data);
-        const filteredCountries = response.data.filter(country =>
-          country.name.common.toLowerCase().includes(newSearch.toLowerCase()))
-        if (filteredCountries.length <= 10) {
-          setCountries(filteredCountries);
-          setMessage("");
-        } else {
-          setMessage("Be more specific");
-          setCountries([]);
-        }
+        setCountries(response.data)
       });
-  }, [newSearch, message]);
+  // }, [newSearch, message]);
+  }, []);
 
   const onSearchChange = (event) => {
-    setNewSearch(event.target.value);
+    // setNewSearch(event.target.value);
+
+    const filtered = countries.filter(country =>
+      country.name.common.toLowerCase().includes(event.target.value.toLowerCase()))
+    if (filteredCountries.length <= 10) {
+      setFilteredCountries(filtered);
+      setMessage("");
+    } else {
+      setMessage("Be more specific");
+      setFilteredCountries([]);
+    }
   };
 
   return (
@@ -61,9 +65,9 @@ const AppExercise211 = () => {
       </div>
 
       <div>
-        {countries && countries.length > 1
-          ? countries.map((country) => <div>{country.name.common}</div>)
-          : <Country country={countries} /> || null}
+        {filteredCountries && filteredCountries.length > 1
+          ? filteredCountries.map((country) => <div>{country.name.common}</div>)
+          : <Country country={filteredCountries} /> || null}
       </div>
       <div>{message}</div>
     </div>
