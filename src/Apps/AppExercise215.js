@@ -2,6 +2,7 @@ import Filter from "../components/Filter.js";
 import PersonForm from "../components/PersonForm.js";
 import Persons from "../components/Persons.js";
 import axios from "axios";
+import personService from "../services";
 
 import { useState, useEffect } from "react";
 
@@ -12,9 +13,7 @@ const AppExercise215 = () => {
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:3001/persons").then((response) => {
-      setPersons(response.data);
-    });
+    personService.getAll().then((response) => setPersons(response));
   }, []);
 
   const onSubmitHandler = async (event) => {
@@ -27,11 +26,11 @@ const AppExercise215 = () => {
 
     const person = { name: newName, number: newNumber };
 
-    await axios
-      .post("http://localhost:3001/persons", person)
-      .then((response) => {
-        setPersons((personsArr) => personsArr.concat(response.data));
-      });
+    personService
+      .create(person)
+      .then((response) =>
+        setPersons((personsArr) => personsArr.concat(response))
+      );
   };
 
   const onNameChangeHandler = (event) => {
@@ -46,8 +45,8 @@ const AppExercise215 = () => {
     setFilter(event.target.value);
   };
 
-  const notesToShow = persons.filter((note) =>
-    note.name.toLowerCase().includes(filter)
+  const personsToShow = persons.filter((person) =>
+    person.name.toLowerCase().includes(filter)
   );
 
   return (
@@ -66,7 +65,7 @@ const AppExercise215 = () => {
 
       <h3>Numbers</h3>
 
-      <Persons notesToShow={notesToShow} />
+      <Persons notesToShow={personsToShow} />
     </div>
   );
 };
