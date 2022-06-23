@@ -17,8 +17,8 @@ const Country = (props) => {
   }, []);
 
   const FahrenheitToCelsius = (tempFahrenheit) => {
-    return (parseInt(tempFahrenheit) - 273.15).toFixed(1)
- }
+    return (parseInt(tempFahrenheit) - 273.15).toFixed(1);
+  };
 
   return (
     <div>
