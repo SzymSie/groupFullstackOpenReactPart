@@ -2,7 +2,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 const Country = (props) => {
-  const country = props.country[0] ? props.country[0] : "";
+  // const country = props.country[0] ? props.country[0] : "";
+  const country = props.country[0] ?? "";
   const [weather, setWeather] = useState();
   const api_key = process.env.REACT_APP_API_KEY;
 
@@ -15,6 +16,11 @@ const Country = (props) => {
         setWeather(response.data);
       });
   }, []);
+
+  const FahrenheitToCelsius = (tempFahrenheit) => {
+    console.log("checking");
+    return (parseInt(tempFahrenheit) - 273.15).toFixed(1)
+ }
 
   return (
     <div>
@@ -33,7 +39,8 @@ const Country = (props) => {
           {weather && (
             <div>
               <h2>Weather in {country.capital}</h2>
-              <div>Temp: {(parseInt(weather.main.temp) - 273.15).toFixed(1)} Celsius</div>
+              {/* <div>Temp: {(parseInt(weather.main.temp) - 273.15).toFixed(1)} Celsius</div> */}
+              <div> {FahrenheitToCelsius(weather.main.temp)} </div>
               <img
                 src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
               />
@@ -76,9 +83,10 @@ const AppExercise214 = () => {
   };
 
   const showCountryDetails = (country) => {
-    const arr = [];
-    arr[0] = country;
-    setFilteredCountries(arr);
+    setFilteredCountries([country]);
+    // const arr = [];
+    // arr[0] = country;
+    // setFilteredCountries(arr);
   };
 
   const filterStuff = () => {
