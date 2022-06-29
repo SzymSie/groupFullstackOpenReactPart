@@ -18,12 +18,27 @@ const AppExercise217 = () => {
   const onSubmitHandler = async (event) => {
     event.preventDefault();
 
-    if (persons.find((p) => p.name === newName)) {
-      alert(`${newName} is already added to phonebook`);
+    const person = { name: newName, number: newNumber };
+    const personToUpdate = persons.find((p) => p.name === newName);
+
+    if (personToUpdate) {
+      if (
+        window.confirm(
+          `${newName} is already added to phonebook, replace the old number with a new one?`
+        )
+      ) {
+        personService
+          .update(personToUpdate.id, person)
+          .then((returnedPerson) => {
+            setPersons(
+              persons.map((p) =>
+                p.id !== personToUpdate.id ? p : returnedPerson
+              )
+            );
+          });
+      }
       return;
     }
-
-    const person = { name: newName, number: newNumber };
 
     personService
       .create(person)
