@@ -11,7 +11,8 @@ const AppExercise220 = () => {
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
   const [filter, setFilter] = useState("");
-  const [errorMessage, setErrorMessage] = useState(null);
+  const [notificationMessage, setNotificationMessage] = useState(null);
+  const [notificationClass, setNotificationClass] = useState("successful");
 
   useEffect(() => {
     personService.getAll().then((response) => setPersons(response));
@@ -39,9 +40,9 @@ const AppExercise220 = () => {
             );
           });
       }
-      setErrorMessage(`Added ${newName}`);
+      setNotificationMessage(`Added ${newName}`);
       setTimeout(() => {
-        setErrorMessage(null);
+        setNotificationMessage(null);
       }, 5000);
       return;
     }
@@ -51,6 +52,11 @@ const AppExercise220 = () => {
       .then((response) =>
         setPersons((personsArr) => personsArr.concat(response))
       );
+
+    setNotificationMessage(`Added ${newName}`);
+    setTimeout(() => {
+      setNotificationMessage(null);
+    }, 5000);
   };
 
   const onNameChangeHandler = (event) => {
@@ -73,7 +79,14 @@ const AppExercise220 = () => {
     if (window.confirm(`Delete ${name} ?`)) {
       personService
         .deleteItem(id)
-        .then(setPersons(persons.filter((p) => p.id !== id)));
+        .then(setPersons(persons.filter((p) => p.id !== id)))
+        .catch((error) => {
+          setNotificationMessage(`'${name}' was already removed from server`);
+          setNotificationClass("error");
+          setTimeout(() => {
+            setNotificationMessage(null);
+          }, 5000);
+        });
     }
   };
 
@@ -81,7 +94,10 @@ const AppExercise220 = () => {
     <div>
       <h2>Phonebook</h2>
 
-      <Notification message={errorMessage} />
+      <Notification
+        message={notificationMessage}
+        className={notificationClass}
+      />
 
       <Filter onFilterChangeHandler={onFilterChangeHandler} />
 
