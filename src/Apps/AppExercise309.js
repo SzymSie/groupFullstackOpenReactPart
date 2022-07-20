@@ -51,7 +51,10 @@ const AppExercise309 = () => {
       .create(person)
       .then((response) =>
         setPersons((personsArr) => personsArr.concat(response))
-      );
+      ).catch(error => {
+        // this is the way to access the error message
+        console.log(error.response.data.error)
+      });
 
     setNotificationMessage(`Added ${newName}`);
     setTimeout(() => {
@@ -92,7 +95,7 @@ const AppExercise309 = () => {
 
   return (
     <div>
-      <h2>Phonebook</h2>
+      <h2>Phonebook new</h2>
 
       <Notification
         message={notificationMessage}
