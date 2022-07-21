@@ -38,9 +38,15 @@ const AppExercise309 = () => {
                 p.id !== personToUpdate.id ? p : returnedPerson
               )
             );
+          })
+          .catch((error) => {
+            // this is the way to access the error message
+            setNotificationMessage(error.response.data.error);
+            setNotificationClass("error");
           });
       }
-      setNotificationMessage(`Added ${newName}`);
+      setNotificationMessage(`Updated ${newName}`);
+      setNotificationClass("successful");
       setTimeout(() => {
         setNotificationMessage(null);
       }, 5000);
@@ -49,17 +55,20 @@ const AppExercise309 = () => {
 
     personService
       .create(person)
-      .then((response) =>
-        setPersons((personsArr) => personsArr.concat(response))
-      ).catch(error => {
+      .then((response) => {
+        setPersons((personsArr) => personsArr.concat(response));
+      })
+      .catch((error) => {
         // this is the way to access the error message
-        console.log(error.response.data.error)
+        setNotificationMessage(error.response.data.error);
+        setNotificationClass("error");
       });
 
-    setNotificationMessage(`Added ${newName}`);
-    setTimeout(() => {
-      setNotificationMessage(null);
-    }, 5000);
+      setNotificationMessage(`Added ${newName}`);
+      setNotificationClass("successful");
+      setTimeout(() => {
+        setNotificationMessage(null);
+      }, 5000);
   };
 
   const onNameChangeHandler = (event) => {
